@@ -1,12 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import {lazy,Suspense} from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
-import Loader from './components/loader';
-import Header from './components/header';
+import Loader from "./components/loader";
+import Header from "./components/header";
 
-const Home =lazy(()=>import('./pages/home'));
-const Search =lazy(()=>import('./pages/search'));
-const Cart =lazy(()=>import('./pages/cart'));
+
+const Home = lazy(() => import("./pages/home"));
+const Search = lazy(() => import("./pages/search"));
+const Cart = lazy(() => import("./pages/cart"));
+const Shipping = lazy(() => import("./pages/shipping"));
+const Login = lazy(() => import("./pages/login"));
+const Orders = lazy(() => import("./pages/orders"));
+const OrderDetails = lazy(() => import("./pages/order-details"));
 
 //Importing Admin Routes
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
@@ -28,41 +33,54 @@ const TransactionManagement = lazy(
 );
 
 function App() {
-  return <Router>
-    <Header/>
-    <Suspense fallback={<Loader/>}>
-    <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/search" element={<Search/>} />
-      <Route path="/cart" element={<Cart/>} />
+  return (
+    <Router>
+      <Header />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/cart" element={<Cart />} />
+          {/* Not Logged In Route */}
+          <Route path="/login" element={<Login />} />
+          {/* Logged In User Routes */}
+          <Route>
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/order/:id" element={<OrderDetails />} />
+          </Route>
 
-      {/* //Admin Routes  */}
-      <
->
-  <Route path="/admin/dashboard" element={<Dashboard />} />
-  <Route path="/admin/product" element={<Products />} />
-  <Route path="/admin/customer" element={<Customers />} />
-  <Route path="/admin/transaction" element={<Transaction />} />
-  {/* Charts */}
-  <Route path="/admin/chart/bar" element={<Barcharts />} />
-  <Route path="/admin/chart/pie" element={<Piecharts />} />
-  <Route path="/admin/chart/line" element={<Linecharts />} />
-  {/* Apps */}
-  <Route path="/admin/app/coupon" element={<Coupon />} />
-  <Route path="/admin/app/stopwatch" element={<Stopwatch />} />
-  <Route path="/admin/app/toss" element={<Toss />} />
 
-  {/* Management */}
-  <Route path="/admin/product/new" element={<NewProduct />} />
+          {/* //Admin Routes  */}
+          <>
+            <Route path="/admin/dashboard" element={<Dashboard />} />
+            <Route path="/admin/product" element={<Products />} />
+            <Route path="/admin/customer" element={<Customers />} />
+            <Route path="/admin/transaction" element={<Transaction />} />
+            {/* Charts */}
+            <Route path="/admin/chart/bar" element={<Barcharts />} />
+            <Route path="/admin/chart/pie" element={<Piecharts />} />
+            <Route path="/admin/chart/line" element={<Linecharts />} />
+            {/* Apps */}
+            <Route path="/admin/app/coupon" element={<Coupon />} />
+            <Route path="/admin/app/stopwatch" element={<Stopwatch />} />
+            <Route path="/admin/app/toss" element={<Toss />} />
 
-  <Route path="/admin/product/:id" element={<ProductManagement />} />
+            {/* Management */}
+            <Route path="/admin/product/new" element={<NewProduct />} />
 
-  <Route path="/admin/transaction/:id" element={<TransactionManagement />} />
-</>;
+            <Route path="/admin/product/:id" element={<ProductManagement />} />
 
-    </Routes>
-    </Suspense>
-  </Router>
+            <Route
+              path="/admin/transaction/:id"
+              element={<TransactionManagement />}
+            />
+          </>
+          ;
+        </Routes>
+      </Suspense>
+    </Router>
+  );
 }
 
-export default App
+export default App;
