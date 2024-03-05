@@ -1,2 +1,2 @@
 # Bazaar--Ecommerce-
-An Ecommerce website build on MERN Stack.
+An Ecommerce Webapp build on MERN Stack.
