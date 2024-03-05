@@ -1,55 +1,62 @@
-import { useState } from 'react';
-import { FaSearch, FaShoppingBag, FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { useState } from "react";
+import {
+  FaSearch,
+  FaShoppingBag,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaUser,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
 
-const user ={_id:"jfh",role:""};
+const user = { _id: "jfh", role: "" };
 
 function Header() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-const [isOpen,setIsOpen]=useState<boolean>(false);
-
-const logoutHandler=()=>{
+  const logoutHandler = () => {
     setIsOpen(false);
-}
+  };
 
   return (
-    <nav className='header'>
-        <Link onClick={()=>setIsOpen(false)} to={"/"}>HOME</Link>
-        <Link onClick={()=>setIsOpen(false)}  to={"/search"}>
-            <FaSearch/>
-        </Link>
-        <Link onClick={()=>setIsOpen(false)}  to={"/cart"}>
-            <FaShoppingBag/>
-        </Link>
+    <nav className="header">
+      <Link onClick={() => setIsOpen(false)} to={"/"}>
+        HOME
+      </Link>
+      <Link onClick={() => setIsOpen(false)} to={"/search"}>
+        <FaSearch />
+      </Link>
+      <Link onClick={() => setIsOpen(false)} to={"/cart"}>
+        <FaShoppingBag />
+      </Link>
 
-        {
-            user?._id?(
-                <>
-                <button onClick={()=>setIsOpen((prev)=>!prev)}>
-                    <FaUser/>
-                </button>
-                <dialog open={isOpen}>
-                    <div>
-                        {
-                            user.role==="admin" &&(
-                                <Link onClick={()=>setIsOpen(false)}  to="/admin/dashboard">Admin</Link>
-                            )
-                        }
-                        <Link onClick={()=>setIsOpen(false)}  to="/orders">
-                            Orders
-                        </Link>
-                        <button onClick={logoutHandler}>
-                            <FaSignOutAlt/>
-                        </button>
-                    </div>
-                </dialog>
-                </>
-            ) : <Link to={"/login"}>
-                <FaSignInAlt/>
-            </Link>
-        }
+      {user?._id ? (
+        <>
+          <button onClick={() => setIsOpen((prev) => !prev)}>
+            <FaUser />
+          </button>
+          <dialog open={isOpen}>
+            <div>
+              {user.role === "admin" && (
+                <Link onClick={() => setIsOpen(false)} to="/admin/dashboard">
+                  Admin
+                </Link>
+              )}
+              <Link onClick={() => setIsOpen(false)} to="/orders">
+                Orders
+              </Link>
+              <button onClick={logoutHandler}>
+                <FaSignOutAlt />
+              </button>
+            </div>
+          </dialog>
+        </>
+      ) : (
+        <Link to={"/login"}>
+          <FaSignInAlt />
+        </Link>
+      )}
     </nav>
-  )
+  );
 }
 
-export default Header
+export default Header;
