@@ -154,6 +154,7 @@ export const getAllProducts = TryCatch(
       .limit(limit)
       .skip(skip);
 
+    //Run both the Promises simultaneously.
     const [products, filteredOnlyProduct] = await Promise.all([
       productsPromise,
       Product.find(baseQuery),
