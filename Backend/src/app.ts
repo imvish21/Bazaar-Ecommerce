@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 // Using Routes
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/product", productRoute);
+//Order Routes Incoming
 
 app.use("/uploads", express.static("uploads"));
 app.use(errorMiddleware);
