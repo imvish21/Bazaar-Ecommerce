@@ -3,6 +3,7 @@ import { connectDB } from "./utils/features.js";
 import { errorMiddleware } from "./middlewares/error.js";
 import NodeCache from "node-cache"; //NodeCache is a inbuilt class in this package.
 import { config } from "dotenv";
+import morgan from "morgan";
 // Importing Routes
 import userRoute from "./routes/user.js";
 import productRoute from "./routes/products.js";
@@ -11,10 +12,12 @@ config({
     path: "./.env",
 });
 const port = process.env.PORT || 4000;
-connectDB();
+const mongoURI = process.env.MONGO_URI || "";
+connectDB(mongoURI);
 export const myCache = new NodeCache();
 const app = express();
 app.use(express.json());
+app.use(morgan("dev"));
 app.get("/", (req, res) => {
     res.send("API working with /api/v1");
 });
