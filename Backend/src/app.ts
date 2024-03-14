@@ -24,7 +24,7 @@ export const myCache = new NodeCache();
 const app = express();
 
 app.use(express.json());
-app.use(morgan("dev")); //setup to show results in terminal
+app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
   res.send("API working with /api/v1");
