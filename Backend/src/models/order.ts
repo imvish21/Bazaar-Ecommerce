@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//Order Schema
 const schema = new mongoose.Schema(
   {
     shippingInfo: {
