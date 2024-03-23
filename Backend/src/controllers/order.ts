@@ -32,7 +32,7 @@ export const newOrder = TryCatch(
       total,
     });
 
-    //Now, when a order is placed, we need to reduce the stock of the ordered product....
+    //Now, when a order is placed, we need to reduce the stock of the ordered product..
     await reduceStock(orderItems);
     await invalidateCache({ product: true, order: true, admin: true });
 
