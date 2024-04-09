@@ -135,7 +135,7 @@ export const updateProduct = TryCatch(async (req, res, next) => {
   //To save the updated product in database.The save() method is essential to persist these changes to the database(permanently).
   await product.save();
 
-  await invalidateCache({ product: true });
+  await invalidateCache({ product: true, productId: String(product._id) });
 
   return res.status(200).json({
     success: true,
@@ -154,7 +154,7 @@ export const deleteProduct = TryCatch(async (req, res, next) => {
 
   await product.deleteOne();
 
-  await invalidateCache({ product: true });
+  await invalidateCache({ product: true, productId: String(product._id) });
 
   return res.status(200).json({
     success: true,
