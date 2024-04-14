@@ -12,7 +12,7 @@ export const connectDB = (uri: string) => {
     .catch((e) => console.log("Error occured in connecting DB : " + e));
 };
 
-export const invalidateCache = async ({
+export const invalidateCache = ({
   product,
   order,
   admin,
@@ -43,6 +43,12 @@ export const invalidateCache = async ({
     myCache.del(ordersKeys);
   }
   if (admin) {
+    myCache.del([
+      "admin-stats",
+      "admin-pie-charts",
+      "admin-bar-charts",
+      "admin-line-charts",
+    ]);
   }
 };
 
