@@ -3,6 +3,7 @@ import { TryCatch } from "../middlewares/error.js";
 import { Coupon } from "../models/coupon.js";
 import ErrorHandler from "../utils/utility-class.js";
 
+//stripe payment----
 export const createPaymentIntent = TryCatch(async (req, res, next) => {
   const { amount } = req.body;
 
