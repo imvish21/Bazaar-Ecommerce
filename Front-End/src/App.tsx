@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 
 import Loader from "./components/loader";
 import Header from "./components/header";
-
+import { Toaster } from "react-hot-toast";
 
 const Home = lazy(() => import("./pages/home"));
 const Search = lazy(() => import("./pages/search"));
@@ -49,10 +49,8 @@ function App() {
             <Route path="/orders" element={<Orders />} />
             <Route path="/order/:id" element={<OrderDetails />} />
           </Route>
-
-
           {/* //Admin Routes  */}
-          <>
+          <Route>
             <Route path="/admin/dashboard" element={<Dashboard />} />
             <Route path="/admin/product" element={<Products />} />
             <Route path="/admin/customer" element={<Customers />} />
@@ -75,10 +73,11 @@ function App() {
               path="/admin/transaction/:id"
               element={<TransactionManagement />}
             />
-          </>
+          </Route>
           ;
         </Routes>
       </Suspense>
+      <Toaster position="bottom-center" />
     </Router>
   );
 }
