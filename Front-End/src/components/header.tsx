@@ -7,10 +7,13 @@ import {
   FaUser,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { User } from "../types/types";
 
-const user = { _id: "", role: "" }; //admin to user
+interface PropsType {
+  user: User | null;
+}
 
-function Header() {
+const Header = ({ user }: PropsType) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const logoutHandler = () => {
@@ -57,6 +60,6 @@ function Header() {
       )}
     </nav>
   );
-}
+};
 
 export default Header;
