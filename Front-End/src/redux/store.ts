@@ -5,6 +5,7 @@ import { productAPI } from "./api/productAPI";
 
 export const server = import.meta.env.VITE_SERVER;
 
+//creating a store
 export const store = configureStore({
   reducer: {
     [userAPI.reducerPath]: userAPI.reducer,
