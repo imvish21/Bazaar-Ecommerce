@@ -39,7 +39,7 @@ function Search() {
   const addToCartHandler = () => {};
 
   const isPrevPage = page > 1;
-  const isNextPage = page < 4;
+  const isNextPage = page < searchedData?.totalPage!;
 
   if (isError) {
     const err = error as CustomError;
@@ -117,7 +117,7 @@ function Search() {
           </div>
         )}
 
-        {searchedData && searchedData.totalPage > 1 && (
+        {searchedData && searchedData.totalPage >= 1 && (
           <article>
             <button
               disabled={!isPrevPage}
