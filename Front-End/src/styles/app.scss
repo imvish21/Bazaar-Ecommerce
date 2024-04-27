@@ -109,6 +109,35 @@ $color3: rgb(0, 104, 136);
     font-size: 5rem;
   }
 }
+.payhead {
+  font-size: 4rem;
+  @include flex(row);
+  margin-bottom: 3rem;
+  // font-style: italic;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.paypara {
+  @include flex(row);
+  flex-wrap: wrap;
+}
+
+.checkout-container {
+  border: 1px solid rgb(211, 169, 53);
+  border-radius: 20px;
+  margin: 2rem;
+  padding: 2rem;
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  > form {
+    @include flex(column, flex-start, stretch, 2rem);
+    > button {
+      @include btn(1rem, $color3, $color1);
+      width: 100%;
+      font-size: 1.1rem;
+    }
+  }
+}
 
 .admin-container {
   @include grid(1fr 4fr, 2rem);
