@@ -81,3 +81,51 @@ export type Stats = {
   };
   latestTransaction: LatestTransaction[];
 };
+
+type OrderFullfillment = {
+  processing: number;
+  shipped: number;
+  delivered: number;
+};
+
+type RevenueDistribution = {
+  netMargin: number;
+  discount: number;
+  productionCost: number;
+  burnt: number;
+  marketingCost: number;
+};
+
+type UserAgeGroup = {
+  teen: number;
+  adult: number;
+  old: number;
+};
+
+export type Pie = {
+  orderFullfillment: OrderFullfillment;
+  productCategories: Record<string, number>[];
+  stockAvailablity: {
+    inStock: number;
+    outOfStock: number;
+  };
+  revenueDistribution: RevenueDistribution;
+  usersAgeGroup: UserAgeGroup;
+  adminCustomer: {
+    admin: number;
+    customer: number;
+  };
+};
+
+export type Bar = {
+  users: number[];
+  products: number[];
+  orders: number[];
+};
+
+export type Line = {
+  users: number[];
+  products: number[];
+  discount: number[];
+  revenue: number[];
+};
