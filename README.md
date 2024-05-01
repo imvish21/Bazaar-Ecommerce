@@ -3,6 +3,7 @@ An End-to-End Full Stack Ecommerce Website along with an Admin Dashboard.(Typesc
 
 ## Tech Stack: 
 FrontEnd - Typescript, React.js, Sass
+
 BackEnd - Typescript, Node.js, ExpressJs, MongoDB, Firebase
 
 ## Tools:
@@ -10,6 +11,7 @@ Git, GitHub, VS Code, MongoDB Compass, Google Chrome
 
 ## Deployment:
 Frontend - Vercel
+
 Backend - Render
 
 ## Payment Gateway:
